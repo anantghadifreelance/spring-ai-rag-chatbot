@@ -1,0 +1,12 @@
+spring:
+  ai:
+    openai:
+      api-key: ""
+    model:
+      # No OpenAI clients in tests: offline fakes are provided by OfflineAiTestConfiguration.
+      chat: none
+      embedding: none
+
+rag:
+  retrieval:
+    similarity-threshold: 0.1

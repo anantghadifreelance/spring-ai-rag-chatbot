@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: spring-ai-rag-chatbot
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.0
+      embedding:
+        options:
+          model: text-embedding-3-small
+    model:
+      # Only chat + embeddings are used; keep the other OpenAI clients switched off.
+      image: none
+      audio:
+        speech: none
+        transcription: none
+      moderation: none
+  mvc:
+    problemdetails:
+      enabled: true
+
+rag:
+  vector-store:
+    # simple = in-memory SimpleVectorStore persisted to a JSON file. See README for pgvector.
+    type: simple
+  storage:
+    vector-store-file: data/vector-store.json
+    registry-file: data/documents.json
+  chunking:
+    chunk-size: 400
+    min-chunk-size-chars: 200
+    min-chunk-length-to-embed: 5
+    max-num-chunks: 10000
+  retrieval:
+    top-k: 4
+    similarity-threshold: 0.5
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

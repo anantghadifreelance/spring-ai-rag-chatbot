@@ -1,0 +1,29 @@
+# Build output
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Local vector store / document registry
+data/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+.sts4-cache/
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# OS / misc
+.DS_Store
+Thumbs.db
+*.log
+.env
